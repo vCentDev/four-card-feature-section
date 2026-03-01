@@ -53,10 +53,7 @@
 
 body {
   padding: var(--space-400) 0;
-
   font-family: var(--primary-font);
-  font-size: 16px;
-
   background-color: var(--bg-color);
 }
 
@@ -100,7 +97,6 @@ body {
     COMPONENTS
  *******************/
 main {
-  width: min(300px, 100%);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -110,6 +106,7 @@ main {
 }
 
 .header {
+  max-width: 316px;
   display: flex;
   flex-direction: column;
   gap: var(--space-200);
@@ -122,65 +119,94 @@ main {
 
 .cards {
   display: grid;
-  place-items: center;
-  gap: var(--space-400);
-}
-
-.cards__middle-col {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 314px;
   gap: var(--space-400);
 }
 
 .card {
-  /* max-width: 314px; */
+  height: 250px;
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: var(--space-400);
   padding: var(--space-400);
 
   border-radius: var(--basic-radius);
   box-shadow: var(--basic-shadow);
+  overflow: hidden;
+}
+
+.card__header {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .card__icon {
   align-self: flex-end;
+  width: 64px;
+  height: 64px;
 }
 
 .card--supervisor {
-  border-top: 3px solid var(--color-Cyan);
+  border-block-start: 3px solid var(--color-Cyan);
 }
 .card--team-builder {
-  border-top: 3px solid var(--color-Red);
+  border-block-start: 3px solid var(--color-Red);
 }
 .card--karma {
-  border-top: 3px solid var(--color-Orange);
+  border-block-start: 3px solid var(--color-Orange);
 }
 .card--calculator {
-  border-top: 3px solid var(--color-Blue);
+  border-block-start: 3px solid var(--color-Blue);
 }
 
 /* ***************
   MEDIA QUERIES
  *****************/
-@media (min-width: 767px) {
-  main {
-    width: min(540px, 100%);
+@media (min-width: 48em) {
+  .header {
+    max-width: 540px;
   }
-  .cards__middle-col {
-    flex-direction: row;
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    grid-template-areas:
+      "team team"
+      "supervisor karma"
+      "calculator calculator";
   }
-  .card {
-    width: 314px;
+  .card--team-builder {
+    grid-area: team;
+  }
+  .card--supervisor {
+    grid-area: supervisor;
+  }
+  .card--karma {
+    grid-area: karma;
+  }
+  .card--calculator {
+    grid-area: calculator;
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 90em) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "supervisor team calculator"
+      "supervisor karma calculator";
   }
-  .cards__middle-col {
-    flex-direction: column;
+  .card--team-builder {
+    grid-area: team;
+  }
+  .card--supervisor {
+    grid-area: supervisor;
+  }
+  .card--karma {
+    grid-area: karma;
+  }
+  .card--calculator {
+    grid-area: calculator;
   }
 }
