@@ -149,16 +149,16 @@ main {
 }
 
 .card--supervisor {
-  border-block-start: 3px solid var(--color-Cyan);
+  border-block-start: 4px solid var(--color-Cyan);
 }
 .card--team-builder {
-  border-block-start: 3px solid var(--color-Red);
+  border-block-start: 4px solid var(--color-Red);
 }
 .card--karma {
-  border-block-start: 3px solid var(--color-Orange);
+  border-block-start: 4px solid var(--color-Orange);
 }
 .card--calculator {
-  border-block-start: 3px solid var(--color-Blue);
+  border-block-start: 4px solid var(--color-Blue);
 }
 
 /* ***************
@@ -196,17 +196,5 @@ main {
     grid-template-areas:
       "supervisor team calculator"
       "supervisor karma calculator";
-  }
-  .card--team-builder {
-    grid-area: team;
-  }
-  .card--supervisor {
-    grid-area: supervisor;
-  }
-  .card--karma {
-    grid-area: karma;
-  }
-  .card--calculator {
-    grid-area: calculator;
   }
 }
